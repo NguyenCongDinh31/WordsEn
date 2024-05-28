@@ -1,0 +1,34 @@
+<label>Nhập câu EN: </label>
+<input #temlateEnWords/>
+<br>
+<br>
+<label>Nhập câu VI:  </label>
+<input #temlateViWords/>
+<hr />
+<h3 style="text-align: center">{{originWords.vi}}</h3>
+<h3 *ngIf="isShowAnswer" style="text-align: center">{{originWords.en}}</h3>
+<hr />
+<div
+  cdkDropList
+  cdkDropListOrientation="horizontal"
+  class="example-list"
+  (cdkDropListDropped)="drop($event)"
+>
+  @for (timePeriod of enExample; track enExample) {
+  <div class="example-box" cdkDrag>{{timePeriod}}</div>
+  }
+</div>
+<h3 style="text-align: center">{{enExample.join(' ')}}</h3>
+<h3 style="text-align: center">{{msgCheck}}</h3>
+<hr />
+<div class="btn-control-group">
+  <button (click)="loadData(temlateEnWords, temlateViWords)">Load data</button>
+  <button (click)="checkResult()">Kiem tra</button>
+  <button (click)="showAnswer()">Dap an</button>
+  <button (click)="doAgain()">lam lai</button>
+  <button (click)="speakText()">Speak</button>
+</div>
+
+<!-- Copyright 2024 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->
